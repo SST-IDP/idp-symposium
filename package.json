@@ -1,7 +1,7 @@
 {
   "name": "idp-symposium",
   "version": "0.1.0",
-  "homepage": "https://kaitheredninja.github.io/idp-symposium/",
+  "homepage": "https://sst-idp.ssts.edu.sg",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
