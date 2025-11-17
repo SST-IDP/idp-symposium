@@ -120,7 +120,7 @@ export const trainingRoom3: Room = {
         { // right top
             x: 85,
             y: 35,
-            name: "NUspace",
+            name: "NUSP",
             vertical: true,
         },
         { // right bottom

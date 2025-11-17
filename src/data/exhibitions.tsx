@@ -82,7 +82,7 @@ const exhibitions = [
       "Klassenkreis is an educational platform built on Affinidi Verifiable Credentials, enabling students to own their academic identity through blockchain-backed digital credentials. Unlike traditional LMS platforms that store transcripts in institutional databases, Klassenkreis uses passwordless authentication where students present cryptographically-signed VCs from their personal wallets—making achievements portable across any institution. The platform implements a dual-mode credential system: students log in with existing VCs (authentication mode) while earning new Kudos credentials for quality contributions (portfolio mode), both powered by the Affinidi Iota Framework for selective data disclosure. With privacy-first design, user-created data remain private on databases, yet accessible to others to achieve a collaborative environment, for example, pseudonymous feedback systems enable honest course discussions without identity exposure. AI-powered features including semantic search, quality assessment, and personalized study scheduling enhance the learning experience, but the core innovation is data sovereignty—students control their educational credentials, educators verify authenticity cryptographically, and institutions can trust without centralized gatekeepers. Built with Flutter Web, Express.js, and MongoDB Atlas, Klassenkreis demonstrates how education technology can prioritize student ownership over vendor lock-in.",
   },
   {
-    projectId: "GWS-Nitto",
+    projectId: "GWS-NITTO",
     title:
       "Cultivation of Algae biomass using a modular system",
     members: [
@@ -200,7 +200,7 @@ const exhibitions = [
       "Our skin is teeming with trillions of microorganisms, like bacteria, fungi and viruses. Collectively, they are known as the skin microbiome, and it is part of a physical layer that protects us from the outside world. Everyone’s skin flora is unique and there are studies that show that skin conditions such as atopic dermatitis, psoriasis, and acne vulgaris are related to imbalances in skin microbiomes. In this project, the students will use PCR as a diagnostic tool to quantitate different microorganisms collected from each skin sample and correlate the genetic results with the current skin conditions of the test subjects.",
   },
   {
-    projectId: "NIE(ECO)",
+    projectId: "NIE (ECO)",
     title:
       "Investigating the Effect of Habitat Disturbances on Insectivory and Frugivory",
     members: ["FAITH NAOMI LIM JUN EN"," GOH ZONG DA, BRYAN", "ETHAN TAN EN YU","JUSTIN ANG WEN JIE (HONG WENJIE)"],
