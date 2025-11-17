@@ -159,7 +159,7 @@ const exhibitions = [
       "SEE EN MIN RUTH"
     ],
     organization: "BII",
-    logo: magorium,
+    logo: bii,
     synopsis:
       "Ring-enhancing brain lesion (REBL) is a phenomena when patient’s brain CT and MRI scans show ring-like patterns, usually with a dark round shaped. These lesions may be caused by many reasons, e.g. tuberculous, fungal brain abscesses, cancers, toxoplasma, nocardia etc. Patients with REBL may experience rapidly deteriorating condition and can die within a week. Hence, a correct diagnosis is important. A correct diagnosis increases the chance of an appropriate treatment, saving the patient’s life. There is a need for a non-invasive method of diagnosing REBLs. In recent years, artificial intelligence (AI) has been increasingly utilised in clinical radiology for the detection, characterisation and monitoring of lesions. In this study, the Project Parties will investigate the utility of AI in characterising and classifying REBLs on brain imaging into infective and non-infective subgroups and in differentiating pyogenic brain abscess from the other infective etiologies.",
   },
