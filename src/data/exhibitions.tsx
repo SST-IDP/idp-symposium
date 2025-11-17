@@ -208,6 +208,16 @@ const exhibitions = [
     synopsis:
       "Ecosystem functions, including frugivory and insectivory, are crucial processes that maintain ecological balance, yet they are increasingly impacted by human disturbances. This project investigates the effects of habitat fragmentation and deforestation on the ecosystem functions of frugivory and insectivory on Sentosa Island. Over the course of five weeks, data were collected across various fragments on the island. Human disturbances were quantified using distance to the nearest building and road, average canopy cover of the station, perimeter-to-area ratio of fragments, and total average precipitation. Rates of frugivory and insectivory were measured by counting the number of attacked clay models attached to natural foliage. Data analysis was done using generalised linear mixed models and the Second Order Akaike Information Criterion (AICc) for model selection. Our findings suggest that human disturbances differentially affect ecosystem functions, highlighting the need to consider function-specific responses in conservation planning and urban ecosystem management.",
   },
+  {
+    projectId: "MGRM",
+    title:
+      "Developing a Recycling Bin 2.0",
+    members: ["POK VANN XYN","ANG LIANG TZE (WANG LIANGZI)", "KENT NG KEN CHONG (HUANG JIANCONG)"],
+    organization: "Magorium",
+    logo: magorium,
+    synopsis:
+      "The escalation of waste generation and the persistent prevalence of recyclate contamination are recognised as significant impediments to effective resource recovery in Singapore. In response, the project entitled Recycling Bin 2.0, undertaken in collaboration with the company Magorium, proposes the development of an advanced recycling receptacle intended for both institutional and public deployment. The system combines automated sorting mechanisms predicated on computer‑vision technology with real‑time monitoring and data transmission via an Internet of Things (IoT) architecture. Key features include: automated classification of materials to reduce contamination, bin‑full and utilisation sensors to optimise collection logistics, and a user‑centric mobile application that leverages gamification to foster public engagement—particularly among younger demographics. By integrating these technological and behavioural components, Recycling Bin 2.0 aims to enhance the quality of reusable material streams, increase user participation in recycling programmes, and align with national objectives for a circular economy and zero‑waste future.",
+  },
 ];
 
 export default exhibitions;
