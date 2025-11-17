@@ -21,7 +21,6 @@ import nccs from "../assets/logos/nccs.png";
 import irp from "../assets/logos/irp.png";
 import bac from "../assets/logos/bac.png";
 import tll from "../assets/logos/tll.png";
-
 const exhibitions = [
   {
     projectId: "HWN",
@@ -194,7 +193,7 @@ const exhibitions = [
       "MUHAMMAD AAREEZ EESHAN BIN MUHAMMAD FAIZAL",
       "TEO BUE MENG (ZHANG BEIMING)",
     ],
-    organization: "BAC College (Singapore) Pte. Ltd",
+    organization: "Bioacumen",
     logo: bac, 
     synopsis:
       "Our skin is teeming with trillions of microorganisms, like bacteria, fungi and viruses. Collectively, they are known as the skin microbiome, and it is part of a physical layer that protects us from the outside world. Everyone’s skin flora is unique and there are studies that show that skin conditions such as atopic dermatitis, psoriasis, and acne vulgaris are related to imbalances in skin microbiomes. In this project, the students will use PCR as a diagnostic tool to quantitate different microorganisms collected from each skin sample and correlate the genetic results with the current skin conditions of the test subjects.",
