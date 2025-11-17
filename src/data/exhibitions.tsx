@@ -17,7 +17,7 @@ import gws from "../assets/logos/gws.png";
 import sick from "../assets/logos/sick.png"
 import nuspace from "../assets/logos/nuspace.png";
 import sit from "../assets/logos/sit.png";
-import nccs from "../assets/logos/ncss.png";
+import nccs from "../assets/logos/nccs.png";
 import irp from "../assets/logos/irp.png";
 import bac from "../assets/logos/bac.png";
 import tll from "../assets/logos/tll.png";
