@@ -1,9 +1,16 @@
 import React from 'react';
 
-export const TabSelector = ({ activeTab, setActiveTab }) => {
+type Tab = 'Agenda' | 'Exhibitions';
+
+interface TabSelectorProps {
+  activeTab: Tab;
+  setActiveTab: React.Dispatch<React.SetStateAction<Tab>>;
+}
+
+export const TabSelector = ({ activeTab, setActiveTab }: TabSelectorProps) => {
   return (
     <div className="flex border-b border-gray-200 mb-6 backdrop-blur-sm">
-      {['Agenda', 'Exhibitions'].map((tab) => (
+      {(['Agenda', 'Exhibitions'] as Tab[]).map((tab) => (
         <button
           key={tab}
           onClick={() => setActiveTab(tab)}

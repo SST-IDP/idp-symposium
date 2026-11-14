@@ -40,6 +40,15 @@ const AgendaView = () => {
       icon: Sofa,
       color: "yellow",
     },
+
+    {
+      name: "Welcome address by NP Deputy Principal Mr Mah Wee Beng",
+      venue: "Auditorium (Level 3)",
+      startTime: "13:30",
+      endTime: "13:35",
+      icon: Speech,
+      color: "green",
+    },
     
     {
       name: "Opening Address by Mr Nick Chan, Principal of School of Science and Technology, Singapore",
@@ -77,10 +86,11 @@ const AgendaView = () => {
       name: "Closing & Group Photo",
       venue: "Auditorium (Level 3)",
       startTime: "15:30",
+      endTime: undefined,
       icon: Camera,
       color: "purple",
     },
-  ];
+  ] as const;
 
   const colorMap = {
     red: {

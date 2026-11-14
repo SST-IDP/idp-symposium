@@ -2,19 +2,24 @@ import React from 'react';
 import FloorPlan from './FloorPlan.tsx';
 import { Room } from '../data/floorplan.tsx';
 
-const InteractiveFloorPlan = ({floorplan, onGroupFocus}) => {
+type InteractiveFloorPlanProps = {
+  floorplan: Room[];
+  onGroupFocus: (tableName: string) => void;
+};
+
+const InteractiveFloorPlan = ({floorplan, onGroupFocus}: InteractiveFloorPlanProps) => {
   // store which room is currently focused, or null if no room is focused
   const [focusedRoom, setFocusedRoom] = React.useState<Room | null>(null);
 
   // create a callback function to handle room clicks
-  const handleRoomClick = (roomName) => {
+  const handleRoomClick = (roomName: string) => {
     console.log(`Room clicked: ${roomName}`)
 
     if (focusedRoom?.name === roomName) {
       setFocusedRoom(null);
     } else {
       // get the room object from the floorplan data
-      const room = floorplan.find(room => room.name === roomName);
+      const room = floorplan.find((room: Room) => room.name === roomName);
       if (!room) {
         console.error(`Room not found: ${roomName}`);
         return;
@@ -34,7 +39,7 @@ const InteractiveFloorPlan = ({floorplan, onGroupFocus}) => {
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-gray-100 active:bg-gray-50 cursor-pointer">
       <FloorPlan
-        width={focusedRoom == null ? 650 : focusedRoom.roomWidth}
+        width={focusedRoom == null ? 1000 : focusedRoom.roomWidth}
         height={focusedRoom == null ? 700 : focusedRoom.roomHeight}
         rooms={floorplan}
         offsetX={(focusedRoom?.roomX || 0)*-1}

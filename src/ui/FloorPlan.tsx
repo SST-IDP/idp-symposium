@@ -6,7 +6,38 @@ const tableHeight = 80;
 const wallThickness = 5; // thickness of the wall and door
 const doorWidth = 40+wallThickness; // width of the door, plus some allowance for the wall
 
-const FloorPlan = ({width, height, rooms, onRoomClick, onTableClick, offsetX=0, offsetY=0}) => {
+type TableData = { name: string; vertical: boolean; x: number; y: number };
+type DoorData = {
+  x: number;
+  y: number;
+  double?: boolean;
+  vertical?: boolean;
+  wallThickness?: number;
+  doorWidth?: number;
+  isLeftHinge?: boolean;
+  color?: string;
+};
+type RoomData = {
+  name: string;
+  roomX: number;
+  roomY: number;
+  roomWidth: number;
+  roomHeight: number;
+  tables: TableData[];
+  doors: DoorData[];
+  walled: boolean;
+};
+type FloorPlanProps = {
+  width: number;
+  height: number;
+  rooms: RoomData[];
+  onRoomClick: (name: string) => void;
+  onTableClick: (name: string) => void;
+  offsetX?: number;
+  offsetY?: number;
+};
+
+const FloorPlan = ({width, height, rooms, onRoomClick, onTableClick, offsetX=0, offsetY=0}: FloorPlanProps) => {
     return (
         <div className="bg-white">
             <div className="w-full max-w-xl mx-auto">
@@ -31,7 +62,10 @@ const FloorPlan = ({width, height, rooms, onRoomClick, onTableClick, offsetX=0, 
     );
 };
 
-const RoomPlan = ({onTableClick, onRoomClick, roomX, roomY, roomWidth, roomHeight, tables, doors, name, walled}) => {
+const RoomPlan = ({onTableClick, onRoomClick, roomX, roomY, roomWidth, roomHeight, tables, doors, name, walled}: RoomData & {
+  onTableClick: (name: string) => void;
+  onRoomClick: () => void;
+}) => {
     return (
       <g transform={`translate(${roomX}, ${roomY})`}> {/* Transform the X and Y according to roomX and roomY */}
 
@@ -72,7 +106,11 @@ const RoomPlan = ({onTableClick, onRoomClick, roomX, roomY, roomWidth, roomHeigh
     );
 };
 
-const Table = ({onClick, vertical, x, y, roomWidth, roomHeight, name}) => {
+const Table = ({onClick, vertical, x, y, roomWidth, roomHeight, name}: TableData & {
+  onClick: () => void;
+  roomWidth: number;
+  roomHeight: number;
+}) => {
     const width = vertical ? tableWidth : tableHeight;
     const height = vertical ? tableHeight : tableWidth;
 
@@ -86,7 +124,7 @@ const Table = ({onClick, vertical, x, y, roomWidth, roomHeight, name}) => {
             y={adjustedY}
             width={width}
             height={height}
-            fill="#d1d5db"
+            fill="#0ea5e9"
             stroke="black"
             className="hover:fill-blue-300 transition-colors cursor-pointer"
         />
@@ -104,7 +142,7 @@ const Table = ({onClick, vertical, x, y, roomWidth, roomHeight, name}) => {
     );
 }
 
-const Door = (doorParams) => {
+const Door = (doorParams: DoorData & { roomWidth: number; roomHeight: number }) => {
   const {
     x,
     y,
@@ -130,7 +168,12 @@ const Door = (doorParams) => {
   // Determine rotation based on vertical/horizontal orientation
   const rotation = vertical ? 90 : 0;
 
-  const SingleDoor = ({ x, y, width, isLeftHinge }) => (
+  const SingleDoor = ({ x, y, width, isLeftHinge }: {
+    x: number;
+    y: number;
+    width: number;
+    isLeftHinge: boolean;
+  }) => (
     <g>
       {/* Door panel */}
       <line
