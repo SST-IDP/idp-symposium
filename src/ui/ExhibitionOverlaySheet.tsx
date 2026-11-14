@@ -1,13 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ExhibitionItem from './ExhibitionItem.tsx';
 
-const ExhibitionOverlaySheet = ({ exhibition, onClose }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const titleRef = useRef(null);
+type ExhibitionOverlaySheetProps = {
+  exhibition: React.ComponentProps<typeof ExhibitionItem>['exhibition'];
+  onClose: () => void;
+};
 
-  const handleScroll = (e) => {
+const ExhibitionOverlaySheet = ({ exhibition, onClose }: ExhibitionOverlaySheetProps) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
     if (titleRef.current) {
       const titlePosition = titleRef.current.getBoundingClientRect().top;
       setIsScrolled(titlePosition < 130);
@@ -80,12 +85,6 @@ const ExhibitionOverlaySheet = ({ exhibition, onClose }) => {
             <ExhibitionItem exhibition={exhibition} />
           </div>
           
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Synopsis</h3>
-            <p className="text-gray-600">
-              {exhibition.synopsis}
-            </p>
-          </div>
         </motion.div>
       </motion.div>
     </motion.div>

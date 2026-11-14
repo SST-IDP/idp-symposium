@@ -7,6 +7,8 @@ import exhibitions from '../data/exhibitions.tsx';
 import InteractiveFloorPlan from './InteractiveFloorPlan.tsx';
 import floorplan from '../data/floorplan.tsx';
 
+type Exhibition = (typeof exhibitions)[number];
+
 const tableVariants = {
   hidden: {
     opacity: 0,
@@ -46,10 +48,10 @@ const useScrollLock = () => {
 
 const ExhibitionsView = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedExhibition, setSelectedExhibition] = useState(null);
+  const [selectedExhibition, setSelectedExhibition] = useState<Exhibition | null>(null);
   const [lockScroll, unlockScroll] = useScrollLock();
 
-  const handleOpenExhibition = (exhibition) => {
+  const handleOpenExhibition = (exhibition: Exhibition) => {
     lockScroll();
     setSelectedExhibition(exhibition);
   };
@@ -92,7 +94,7 @@ const ExhibitionsView = () => {
           >
             <InteractiveFloorPlan
               floorplan={floorplan}
-              onGroupFocus={(tableName) => {
+              onGroupFocus={(tableName: string) => {
                 const exhibition = exhibitions.find(
                   (exhibition) => exhibition.projectId === tableName
                 );
