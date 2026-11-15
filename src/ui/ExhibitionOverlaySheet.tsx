@@ -82,7 +82,7 @@ const ExhibitionOverlaySheet = ({ exhibition, onClose }: ExhibitionOverlaySheetP
           className="p-4 space-y-6"
         >
           <div ref={titleRef}>
-            <ExhibitionItem exhibition={exhibition} />
+            <ExhibitionItem exhibition={exhibition} showSynopsis />
           </div>
           
         </motion.div>

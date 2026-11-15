@@ -7,13 +7,15 @@ type Exhibition = {
   title: string;
   members: string[];
   organization: string;
+  synopsis: string;
 };
 
 type ExhibitionItemProps = {
   exhibition: Exhibition;
+  showSynopsis?: boolean;
 };
 
-const ExhibitionItem = ({ exhibition }: ExhibitionItemProps) => {
+const ExhibitionItem = ({ exhibition, showSynopsis = false }: ExhibitionItemProps) => {
   return (
     <div className="flex items-start">
       {exhibition.logo && (
@@ -42,10 +44,14 @@ const ExhibitionItem = ({ exhibition }: ExhibitionItemProps) => {
               {exhibition.organization}
             </span>
           </div>
+          {showSynopsis && (
+            <div className="text-gray-700 text-sm mt-2">
+              {exhibition.synopsis}
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 };
-
 export default ExhibitionItem;
