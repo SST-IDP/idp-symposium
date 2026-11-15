@@ -1,13 +1,18 @@
-import awwa from "../assets/logos/awwa.png";
-import bii from "../assets/logos/bii.png";
-import hwn from "../assets/logos/hwn.png";
+import hwn from "../assets/logos/hwn.webp";
 import kkh from "../assets/logos/kkh.png";
-import nie from "../assets/logos/nie.png";
-import nni from "../assets/logos/nni.png";
+import awwa from "../assets/logos/awwa.png";
 import sit from "../assets/logos/sit.png";
-import sick from "../assets/logos/sick.png";
-import nccs from "../assets/logos/nccs.png";
-import bac from "../assets/logos/bac.png";
+import nni from "../assets/logos/nni.png";
+import nccs from "../assets/logos/nccs.jpeg";
+import nie from "../assets/logos/nie.png";
+import bac from "../assets/logos/bac.jpg";
+import sick from "../assets/logos/sick.svg";
+import bii from "../assets/logos/bii.webp";
+import ttsh from "../assets/logos/ttsh.jpeg";
+import dso from "../assets/logos/dso.jpeg";
+import stm from "../assets/logos/stm.jpg";
+import ghk from "../assets/logos/ghk.jpeg";
+import nhcs from "../assets/logos/nhcs.png";
 
 const exhibitions = [
   {
@@ -38,6 +43,7 @@ const exhibitions = [
     title: "Linen Defect Detection Solution",
     members: ["TESSA LEE JIN EN", "TEO OWEN", "TOH HONG RUI, TREVOR (ZHUO HONGRUI)"],
     organization: "TTSH",
+    logo: ttsh,
     synopsis:
       "The current manual process of identifying torn, stained, or defective linen and pyjamas in the hospital’s linen workflow is labour-intensive, time-consuming, and subject to human error. Defective items that are not detected may compromise patient comfort, safety, and satisfaction. This projects aims to develop a computer vision-based solution to detect torn, stained, or defective linen and pyjamas efficiently, thereby enhancing service reliability and patient experience while reducing staff workload and wastage.",
   },
@@ -55,6 +61,7 @@ const exhibitions = [
     title: "Sound Counter-measures Robot Vehicle",
     members: ["ASHVIK DEV", "GABRIEL CONSTANTINE CHAN", "TEIW YONG SHENG JAYDEN"],
     organization: "DSO",
+    logo: dso,
     synopsis:
       "This project aims to develop an autonomous robot that can detect and counter electronic jamming signals to maintain reliable communications in contested environments. Operating independently without wireless communication with its base, the robot will detect the direction of jamming signals, generate counter-signals to reduce interference, and autonomously return to its home base.",
   },
@@ -68,6 +75,7 @@ const exhibitions = [
       "LUM SEN LOONG, ETHAN",
     ],
     organization: "STMicroelectronics",
+    logo: stm,
     synopsis:
       "This project aims to interest students in STEM by bringing the inaccessible information from behind the doors of wafer fabrication labs to the general public through an interactive physical mini-fabrication lab. By simulating the processes in the prototype's fabrication labs, students can learn and visualise how a wafer changes throughout the production process. With the recreated Overhead Transport System (OTS), students can also learn more about how wafers are safely transported around the modern fab, thereby automating wafer production processes. This compact setup provides an engaging educational tool to expose youth to the semiconductor industry.",
   },
@@ -103,6 +111,7 @@ const exhibitions = [
     title: "Creation of GeekyKey",
     members: ["CHUA LI MING ETHAN", "JOSHUA HO WAI YARN", "LEE JUN LEI ADAM", "YAP ZI TAO"],
     organization: "Geekshacking",
+    logo: ghk,
     synopsis:
       "At hackathons and community events, participants often stay within their existing social circles, limiting opportunities to meet new people and form meaningful connections. Event organisers also face the challenge of repeatedly developing software for different activities. GeekyKey is a reusable NFC-based interaction platform designed to encourage face-to-face networking while reducing repeated development work for event organisers. Our solution prioritises ease of use, accessibility without dedicated app installation, affordability, and reusability across events. The system combines passive NFC tokens, dedicated scanning stations, and a web-based platform. Participants can tap one another's tokens using compatible smartphones to view profiles, send connection requests, and exchange contact information with mutual consent. Successful connections unlock compatibility scores, interactive mini-games, and collectible avatar rewards. Organisers can manage participant groups, configure connection rules to encourage interactions beyond existing circles, and monitor engagement through visualisations and statistics. The same NFC infrastructure also supports station-based activities such as digital stamp passports. By separating reusable identity infrastructure from event-specific software, GeekyKey provides a flexible foundation for engaging physical-digital experiences without requiring hardware changes for every new activity.",
   },
@@ -120,6 +129,7 @@ const exhibitions = [
     title: "Cardiac electrophysiological alterations in sepsis-induced cardiomyopathy",
     members: ["EMMA FAITH TAN XIN XUAN", "AIDEN CHAI JUN XIAN", "ER JUN KANG JAYDEN", "YANG KAI JUN BRIAN"],
     organization: "National Heart Centre Singapore (NHCS)",
+    logo: nhcs,
     synopsis:
       "Sepsis is a major cause of mortality globally, with the most common arrhythmic complication of sepsis being atrial fibrillation (AF). Although various studies have contributed to advances in the field, many examine these processes in isolation, hindering a unified understanding. Therefore, we provide an integrated analysis of the systemic phenotypes observed in sepsis. Male C57BL/6J mice were either sham-treated (n = 10) or underwent mild cecal ligation and puncture (CLP) (n = 20). Lead II electrocardiograms and transesophageal atrial pacing were conducted at day seven. Tissues of the heart, lung, liver, kidney, gastrocnemius, and circulating plasma were then harvested for histology and molecular studies. We illustrated increased AF inducibility, impaired cardiac electrical signalling, such as prolonged P-wave, QTc and Tpeak-end intervals and depressed heart rate variability. Elevated systemic and localised tissue expression of pro-inflammatory mediators (Interleukin-6 and S100A8/A9), accompanied by cellular infiltrates, fibrosis and cardiomyocyte hypertrophy were also observed in CLP mice. The integration of AF inducibility with electrophysiological, structural, molecular and systemic phenotypes provides a comprehensive characterisation of sepsis-associated cardiac and multi-organ pathology. Collectively, we have evaluated a chronic model that is suitable for investigating pathophysiology in sepsis, providing a platform to evaluate potential therapeutic interventions, such as inflammatory blockers or genetic manipulations.",
   },
