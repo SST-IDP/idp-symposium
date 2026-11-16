@@ -43,7 +43,7 @@ const ExhibitionOverlaySheet = ({ exhibition, onClose }: ExhibitionOverlaySheetP
           stiffness: 300
         }}
         onClick={e => e.stopPropagation()}
-        className="mx-auto w-full max-w-md overflow-y-auto rounded-t-3xl bg-white shadow-2xl max-h-[90vh]"
+        className="mx-auto w-[70vw] min-w-[70vw] overflow-y-auto rounded-t-3xl bg-white shadow-2xl max-h-[90vh]"
         onScroll={handleScroll}
       >
         <div className="sticky top-0 z-10 border-b border-slate-100 bg-white/90 backdrop-blur-md">
