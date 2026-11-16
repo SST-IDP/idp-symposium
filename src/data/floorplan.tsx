@@ -19,7 +19,7 @@ export const trainingRoom2: Room = {
   doors: [
     { x: 8, y: 100, vertical: false, double: true },
     { x: 50, y: 100, vertical: false, double: false },
-    { x: 100, y: 55, vertical: true, double: false },
+    { x: 100, y: 82, vertical: true, double: false },
   ],
   tables: [
     { x: 28, y: 12, name: "NIE(ENV)", vertical: false },

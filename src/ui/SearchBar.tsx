@@ -1,7 +1,5 @@
 import React, { type ChangeEvent } from 'react';
-import { 
-  Search,     // search icon
-} from 'lucide-react';
+import { Search, X } from 'lucide-react';
 
 interface SearchBarProps {
   value: string;
@@ -10,17 +8,27 @@ interface SearchBarProps {
 
 const SearchBar = ({ value, onChange }: SearchBarProps) => {
   return (
-    <div className="relative mb-4">
-      <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-        <Search className="h-4 w-4 text-gray-400" />
+    <div className="relative">
+      <div className="pointer-events-none absolute inset-y-0 left-4 flex items-center">
+        <Search className="h-4 w-4 text-slate-400" />
       </div>
       <input
-      type="text"
-      className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
-      placeholder="Search exhibitions..."
-      value={value}
-      onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
+        type="text"
+        className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-10 text-sm shadow-card placeholder:text-slate-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100"
+        placeholder="Search exhibitions..."
+        value={value}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
       />
+      {value && (
+        <button
+          type="button"
+          aria-label="Clear search"
+          onClick={() => onChange('')}
+          className="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-slate-600"
+        >
+          <X className="h-4 w-4" />
+        </button>
+      )}
     </div>
   );
 };

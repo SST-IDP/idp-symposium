@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { MousePointerClick } from 'lucide-react';
 import SearchBar from './SearchBar.tsx';
 import ExhibitionOverlaySheet from './ExhibitionOverlaySheet.tsx';
 import ExhibitionItem from './ExhibitionItem.tsx';
@@ -82,7 +83,7 @@ const ExhibitionsView = () => {
       <SearchBar value={searchTerm} onChange={setSearchTerm} />
       
       <div>
-      <h2 className="px-1">Click on the booths in the map below to learn more.</h2>
+      <p className="mb-2 flex items-center px-1 text-xs font-medium text-slate-500"><MousePointerClick className="mr-1.5 h-3.5 w-3.5" />Tap a booth on the map to learn more.</p>
       <AnimatePresence mode="wait">
         {searchTerm.length === 0 ? (
           <motion.div
@@ -129,7 +130,7 @@ const ExhibitionsView = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-center py-8 text-gray-500"
+              className="py-8 text-center text-sm text-slate-500"
             >
               No exhibitions found matching your search
             </motion.div>
@@ -160,7 +161,7 @@ const ExhibitionsView = () => {
                       },
                     },
                   }}
-                  className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-gray-100 active:bg-gray-50 cursor-pointer"
+                  className="cursor-pointer rounded-2xl border border-slate-200/70 bg-white p-4 shadow-card transition-shadow hover:shadow-lift active:scale-[0.99]"
                   onClick={() => handleOpenExhibition(exhibition)}
                 >
                   <ExhibitionItem exhibition={exhibition} />

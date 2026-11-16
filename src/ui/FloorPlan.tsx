@@ -4,7 +4,6 @@ const tableWidth = 40;
 const tableHeight = 80;
 
 const wallThickness = 5; // thickness of the wall and door
-const doorWidth = 40+wallThickness; // width of the door, plus some allowance for the wall
 
 type TableData = { name: string; vertical: boolean; x: number; y: number };
 type DoorData = {
@@ -39,7 +38,7 @@ type FloorPlanProps = {
 
 const FloorPlan = ({width, height, rooms, onRoomClick, onTableClick, offsetX=0, offsetY=0}: FloorPlanProps) => {
     return (
-        <div className="bg-white">
+        <div>
             <div className="w-full max-w-xl mx-auto">
             <svg 
                 viewBox={`0 0 ${width} ${height}`}
@@ -75,11 +74,12 @@ const RoomPlan = ({onTableClick, onRoomClick, roomX, roomY, roomWidth, roomHeigh
           y={0}
           width={roomWidth}
           height={roomHeight}
-          fill="white"
-          stroke="black"
+          rx={8}
+          fill={walled ? "#f8fafc" : "#ffffff"}
+          stroke="#94a3b8"
           onClick={onRoomClick}
           strokeWidth={wallThickness}
-          stroke-dasharray={walled ? "" : "10,10"}
+          strokeDasharray={walled ? "" : "10,10"}
         />
 
         {/* Render the tables */}
@@ -95,8 +95,9 @@ const RoomPlan = ({onTableClick, onRoomClick, roomX, roomY, roomWidth, roomHeigh
         {/* Room label */}
         <text
           x={roomWidth/2}
-          y={roomHeight/2}
+          y={walled ? roomHeight/2 : 28}
           className="text-lg font-semibold"
+          fill="#475569"
           textAnchor="middle"
           dominantBaseline="middle"
         >
@@ -124,14 +125,17 @@ const Table = ({onClick, vertical, x, y, roomWidth, roomHeight, name}: TableData
             y={adjustedY}
             width={width}
             height={height}
-            fill="#0ea5e9"
-            stroke="black"
-            className="hover:fill-blue-300 transition-colors cursor-pointer"
+            rx={6}
+            fill="#6366f1"
+            stroke="#4338ca"
+            className="hover:fill-indigo-400 transition-colors cursor-pointer"
         />
         <text
             x={adjustedX + width / 2}
             y={adjustedY + height / 2}
-            className="text-sm"
+            className="text-sm font-semibold"
+            fill="#ffffff"
+            pointerEvents="none"
             textAnchor="middle"
             dominantBaseline="middle"
             transform={vertical ? `rotate(90, ${adjustedX + width / 2}, ${adjustedY + height / 2})` : undefined}
@@ -150,90 +154,58 @@ const Door = (doorParams: DoorData & { roomWidth: number; roomHeight: number }) 
     roomHeight,
     double = false,
     vertical = false,
-    wallThickness = 10,
     doorWidth = 30,
     isLeftHinge = true,
-    color = "#000",
+    color = "#475569",
   } = doorParams;
 
-  // Calculate dimensions and position
-  const doors = double ? 2 : 1;
-  const width = vertical ? wallThickness * 2 : doorWidth * doors;
-  const height = vertical ? doorWidth * doors : wallThickness * 2;
-  const rectposX = (x / 100) * roomWidth - width / 2;
-  const rectposY = (y / 100) * roomHeight - height / 2;
-  const posX = ((x / 100) * roomWidth - width / 2) - 0.5;
-  const posY = ((y / 100) * roomHeight - height / 2) - 10;
+  // Gap length along the wall, and the centre of the gap in room coordinates
+  const length = doorWidth * (double ? 2 : 1);
+  const cx = (x / 100) * roomWidth;
+  const cy = (y / 100) * roomHeight;
 
-  // Determine rotation based on vertical/horizontal orientation
-  const rotation = vertical ? 90 : 0;
+  // Doors always swing into their own room, based on which wall they sit on
+  const rotation = vertical ? (x >= 50 ? 90 : -90) : y >= 50 ? 180 : 0;
 
-  const SingleDoor = ({ x, y, width, isLeftHinge }: {
-    x: number;
-    y: number;
-    width: number;
-    isLeftHinge: boolean;
-  }) => (
-    <g>
-      {/* Door panel */}
-      <line
-        x1={isLeftHinge ? 0 : width}
-        y1="0"
-        x2={isLeftHinge ? 0 : width}
-        y2={-width}
-        stroke={color}
-        strokeWidth="3"
-      />
-
-      {/* Door swing arc */}
-      <path
-        d={`M ${isLeftHinge ? 0 : width} ${-width} 
-            A ${width} ${width} 0 0 ${isLeftHinge ? 1 : 0} 
-            ${isLeftHinge ? width : 0} 0`}
-        fill="none"
-        stroke={color}
-        strokeWidth="1"
-        strokeDasharray="3 3"
-      />
-    </g>
-  );
+  // Leaf + swing arc, drawn in local coords: wall along +x at y=0, room below (+y)
+  const Leaf = ({ at, hingeLeft }: { at: number; hingeLeft: boolean }) => {
+    const hx = at + (hingeLeft ? 0 : doorWidth);
+    return (
+      <g>
+        <line x1={hx} y1={0} x2={hx} y2={doorWidth} stroke={color} strokeWidth="3" strokeLinecap="round" />
+        <path
+          d={`M ${hx} ${doorWidth} A ${doorWidth} ${doorWidth} 0 0 ${hingeLeft ? 0 : 1} ${hingeLeft ? hx + doorWidth : hx - doorWidth} 0`}
+          fill="none"
+          stroke={color}
+          strokeWidth="1"
+          strokeDasharray="3 3"
+        />
+      </g>
+    );
+  };
 
   return (
-    <g>
-      <rect x={rectposX} y={rectposY} width={width} height={height} fill="white" />
-      <g
-        transform={`translate(${posX},${posY}) rotate(${rotation}, ${
-          width / 2
-        }, ${height / 2})`}
-        className="hover:opacity-80 transition-opacity cursor-pointer"
-      >
+    <g transform={`translate(${cx},${cy}) rotate(${rotation}) translate(${-length / 2},0)`}>
+      {/* cut the opening in the wall */}
+      <rect
+        x={0}
+        y={-wallThickness / 2 - 1}
+        width={length}
+        height={wallThickness + 2}
+        fill="#f8fafc"
+      />
+      <g className="hover:opacity-80 transition-opacity cursor-pointer">
         {double ? (
-          // Double doors
           <>
-            {/* Left door */}
-            <g transform={`translate(0, ${height})`}>
-              <SingleDoor x={0} y={0} width={doorWidth} isLeftHinge={true} />
-            </g>
-            {/* Right door */}
-            <g transform={`translate(${doorWidth}, ${height})`}>
-              <SingleDoor x={0} y={0} width={doorWidth} isLeftHinge={false} />
-            </g>
+            <Leaf at={0} hingeLeft={true} />
+            <Leaf at={doorWidth} hingeLeft={false} />
           </>
         ) : (
-          // Single door
-          <g transform={`translate(0, ${height})`}>
-            <SingleDoor
-              x={0}
-              y={0}
-              width={doorWidth}
-              isLeftHinge={isLeftHinge}
-            />
-          </g>
+          <Leaf at={0} hingeLeft={isLeftHinge} />
         )}
       </g>
     </g>
   );
 };
-
 
 export default FloorPlan;

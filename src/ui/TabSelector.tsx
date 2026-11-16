@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 type Tab = 'Agenda' | 'Exhibitions';
 
@@ -9,20 +10,31 @@ interface TabSelectorProps {
 
 export const TabSelector = ({ activeTab, setActiveTab }: TabSelectorProps) => {
   return (
-    <div className="flex border-b border-gray-200 mb-6 backdrop-blur-sm">
-      {(['Agenda', 'Exhibitions'] as Tab[]).map((tab) => (
-        <button
-          key={tab}
-          onClick={() => setActiveTab(tab)}
-          className={`flex-1 py-3 text-center font-medium ${
-            activeTab === tab
-              ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-500 hover:text-gray-700'
-          }`}
-        >
-          {tab}
-        </button>
-      ))}
+    <div className="sticky top-0 z-30 -mx-4 bg-slate-50/80 px-4 py-2 backdrop-blur-md">
+      <div className="relative flex rounded-2xl bg-slate-200/70 p-1">
+        {(['Agenda', 'Exhibitions'] as Tab[]).map((tab) => {
+          const isActive = activeTab === tab;
+          return (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              aria-pressed={isActive}
+              className={`relative flex-1 rounded-xl py-2.5 text-sm font-semibold transition-colors ${
+                isActive ? 'text-brand-700' : 'text-slate-500 hover:text-slate-700'
+              }`}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="tab-indicator"
+                  className="absolute inset-0 rounded-xl bg-white shadow-card"
+                  transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                />
+              )}
+              <span className="relative">{tab}</span>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };

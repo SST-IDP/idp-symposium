@@ -27,7 +27,7 @@ const ExhibitionOverlaySheet = ({ exhibition, onClose }: ExhibitionOverlaySheetP
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed inset-0 bg-black bg-opacity-50 z-50 flex flex-col"
+      className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex flex-col"
       onClick={onClose}
     >
       {/* This div creates the top padding space */}
@@ -43,14 +43,15 @@ const ExhibitionOverlaySheet = ({ exhibition, onClose }: ExhibitionOverlaySheetP
           stiffness: 300
         }}
         onClick={e => e.stopPropagation()}
-        className="bg-white rounded-t-xl overflow-y-auto w-full max-h-[90vh]"
+        className="mx-auto w-full max-w-md overflow-y-auto rounded-t-3xl bg-white shadow-2xl max-h-[90vh]"
         onScroll={handleScroll}
       >
-        <div className="sticky top-0 bg-white border-b border-gray-200 z-10">
-          <div className="p-4 flex items-center">
+        <div className="sticky top-0 z-10 border-b border-slate-100 bg-white/90 backdrop-blur-md">
+          <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-slate-200" />
+          <div className="flex items-center px-4 pb-3 pt-2">
             <button
               onClick={onClose}
-              className="flex items-center text-gray-600 hover:text-gray-900"
+              className="flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700"
             >
               <ChevronLeft className="w-5 h-5 mr-1" />
               Back
@@ -64,7 +65,7 @@ const ExhibitionOverlaySheet = ({ exhibition, onClose }: ExhibitionOverlaySheetP
                   exit={{ opacity: 0 }}
                   className="ml-4 truncate flex-1"
                 >
-                  <span className="font-medium">
+                  <span className="text-sm font-semibold">
                     {exhibition.projectId}
                     {exhibition.title && ': '}
                     <span className="font-normal">{exhibition.title}</span>
@@ -79,7 +80,7 @@ const ExhibitionOverlaySheet = ({ exhibition, onClose }: ExhibitionOverlaySheetP
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="p-4 space-y-6"
+          className="p-5 pb-8 space-y-6"
         >
           <div ref={titleRef}>
             <ExhibitionItem exhibition={exhibition} showSynopsis />
