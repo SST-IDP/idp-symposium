@@ -46,11 +46,11 @@ export const trainingRoom3: Room = {
   ],
   tables: [
     { x: 28, y: 12, name: "GHK", vertical: false },
-    { x: 68, y: 12, name: "BII", vertical: false },
+    { x: 48, y: 82, name: "BII", vertical: false },
     { x: 15, y: 50, name: "SIT", vertical: true },
     { x: 88, y: 35, name: "AWWA", vertical: true },
     { x: 88, y: 68, name: "KKH", vertical: true },
-    { x: 48, y: 82, name: "TTSH", vertical: false },
+    { x: 68, y: 12, name: "TTSH", vertical: false },
     { x: 72, y: 82, name: "HWN", vertical: false },
   ],
 };
